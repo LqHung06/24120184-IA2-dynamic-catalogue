@@ -55,6 +55,20 @@ function renderCart() {
   // Prices are in data-price on each card. dataset values are STRINGS:
   // '180000' + 1 is '1800001'. Convert with Number() first.
   // Format a number: total.toLocaleString('vi-VN') + ' đ'
+  if (totalCount === 0) {
+    cartTotal.textContent = '';
+    return;
+  }
+
+  let totalPrice = 0;
+  for (const [id, qty] of Object.entries(cart)) {
+    const card = catalogue.querySelector(`.card[data-id="${id}"]`);
+    if (card && card.dataset.price) {
+      totalPrice += Number(card.dataset.price) * qty;
+    }
+  }
+
+  cartTotal.textContent = ` · ${totalPrice.toLocaleString('vi-VN')} đ`;
 }
 
 // ---------------------------------------------------------------------------
