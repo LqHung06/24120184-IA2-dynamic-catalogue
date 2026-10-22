@@ -111,6 +111,10 @@ searchInput.addEventListener('input', applyFilter);
 // Hint: searchInput.form is the form the input belongs to.
 
 // TODO B3
+searchInput.form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  applyFilter();
+});
 
 
 // ---------------------------------------------------------------------------
